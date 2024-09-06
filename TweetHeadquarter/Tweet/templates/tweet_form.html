@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+TweetNest
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to TweetNest !!!<br> Let's Chirpt</h1>
+<h2 style="text-align: left;">
+    {% if form.instance.pk %} 
+    Edit Tweet 
+    {% else %} 
+    Create a Tweet 
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success" type="submit"> Submit</button>
+    </form>
+    <a href="{% url 'tweet_list' %}">Back to Tweet List</a>
+</h2>
+{% endblock %}
